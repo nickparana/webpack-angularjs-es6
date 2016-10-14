@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="container">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default" ng-click="vm.CheckRepetidos(vm.texto1,vm.texto2)">Compare</button>		 
+          <button type="button" class="btn btn-default" ng-init="showareas=false" ng-click="showareas=!showareas">Edit</button>		
+        </div>	
+    </div>
+    <br>
+    <div class="container"  ng-show="showareas">
+         <div class="form-group">			
+              <textarea class="form-control" rows="10" cols="50" id="comment" placeholder="Ingrese texto n° 1" ng-model="vm.texto1"></textarea>
+         </div>    
+         <div class="form-group">			
+             <textarea class="form-control" rows="10" cols="50" id="comment" placeholder="Ingrese texto n° 2" ng-model="vm.texto2"></textarea>
+         </div>
+    </div>
+    <div class="container">  
+          <div class="panel-group"> 
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Text 1</strong></div>
+                <div class="panel-body" ng-bind-html="vm.texto1 | highlight:vm.repetidos">{{vm.texto1 | highlight:vm.repetidos}}</div>
+            </div> 
+            <div class="panel panel-default">
+               <div class="panel-heading"><strong>Text 2</strong></div>
+               <div class="panel-body" ng-bind-html="vm.texto2 | highlight:vm.repetidos">{{vm.texto2 | highlight:vm.repetidos}}</div>
+            </div>          
+          </div>
+    </div>
+    <div class="container">           
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong>Coincidences:</strong></div>
+                <div class="panel-body" >
+                    <ul class="list-group" ng-repeat="palabra in vm.repetidos track by $index">
+                      <li class="list-group-item">
+                          <strong>{{palabra.contenido}}</strong><span class="badge">{{palabra.count}}</span>
+                        </li>                     
+                    </ul>  
+                </div>
+            </div> 
+    </div>
+</div>
+

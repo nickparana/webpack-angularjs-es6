@@ -1,0 +1,58 @@
+ <div class="container">  
+	
+	 <div class="row">
+		 <div class="col-lg-8">
+			<div class="input-group">
+			  <input type="text" class="form-control input-lg" placeholder="Search for..." ng-model="vm.q" required>
+				<span class="input-group-addon" id="basic-addon2">
+					<input class="input-md col-xm-4" type="date" name="begin_date" id="begin_date" ng-model="vm.begin_date" max = "{{vm.current_date | date:'yyyy-MM-dd'}}" value="{{vm.current_date | date:'yyyy-MM-dd'}}" required>
+				</span>
+				<span class="input-group-addon" id="basic-addon2">
+					<input class="input-md col-xm-4" type="date" name="end_date" id="end_date" ng-model="vm.end_date" max = "{{vm.current_date | date:'yyyy-MM-dd'}}" value="{{vm.current_date | date:'yyyy-MM-dd'}}" required>
+				</span>
+			  	<span class="input-group-btn">					
+					<button class="btn btn-default btn-lg" type="button" ng-click="vm.listarArticulos()">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>					
+			  </span>
+			</div>
+		  </div>
+	</div>
+      <br>
+        <section>            
+            <div class="alert alert-success fade in" ng-show="vm.encontrados && !vm.error">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Se encontraron {{vm.articles.length}} resultados.</strong>
+            </div>
+            <div class="alert alert-info fade in" ng-show="!vm.encontrados && !vm.error">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong> No se encontraron resultados.</strong>
+            </div>
+            <div class="alert alert-danger fade in" ng-show="vm.error && !vm.encontrados">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Se ha producido un error.</strong>
+            </div>
+        
+            <table class="table table-bordered table-striped table-hover table-responsive" ng-show="vm.articles.length">
+            <tr>
+                <th class="text-center"><strong>HEADLINE</strong></th>
+                <th class="text-center"><strong>SNIPPET</strong></th>               
+                <th class="text-center"><strong>DATE</strong></th>
+                <th class="text-center"><strong>STATUS</strong></th>
+            </tr>
+            <tr ng-repeat="a in vm.articles | orderBy:'-pub_date' | limitTo:10">
+                <td class="text-center"> 
+                    <a href="{{a.web_url}}">
+						<strong>{{ a.headline.main }}</strong>
+					</a>                   
+                </td>
+                <td class="text-center">{{ a.snippet }}</td>                 
+                <td class="text-center">{{ a.pub_date | date:'mediumDate'}}</td>   
+                <td class="text-center">
+                     <span ng-show="a.valid_link" class="glyphicon glyphicon-ok"><br>OK</span>
+                     <span ng-hide="a.valid_link" class="glyphicon glyphicon-remove"><br>ERROR</span>
+                </td> 
+            </tr>
+            </table>  
+        </section>        
+</div>  

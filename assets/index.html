@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ApiNYT">
+<head>
+    <title>NYT Article Search</title>
+    <meta charset="utf-8">
+    <script src="js/angular.js"></script>  
+    <script src="js/angular-sanitize.js"></script>
+    <script src="js/angular-route.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/article-module.js"></script>
+     <script src="js/article-config.js"></script>
+  <!--  <script src="js/article-controller.js"></script> -->
+    <script src="js/article-service.js"></script>
+    <script src="js/date-format-service.js"></script>
+    <script src="js/check-url-service.js"></script>    
+    <script src="js/text-service.js"></script>
+    <script src="js/text-filter.js"></script>
+   <!-- <script src="js/text-controller.js"></script> -->
+    <script src="js/article-factory.js"></script>
+    <script src="js/about-controller.js"></script>
+    <script src="js/contact-controller.js"></script> 
+    
+    <script src="js/bundle.js"></script>
+    
+    <base href="/">
+</head>
+    
+<body>     
+    <header>        
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="#">NYT Article Search</a>
+                </div>
+                <ul class="nav navbar-nav">
+                   <li class="active"><a data-toggle="tab" href="home">Home</a></li>  
+                   <li><a data-toggle="tab" href="text">Compare Articles</a></li>
+                   <li><a data-toggle="tab" href="contact">Contact</a></li>  
+                   <li><a data-toggle="tab" href="about">About...</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div ng-view></div>
+    </section>    
+</body>
+</html>
